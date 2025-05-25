@@ -1,5 +1,4 @@
 const express = require("express");
-const mysql = require("mysql2");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 
@@ -7,26 +6,27 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// MySQL DB connection
+// Use environment variables for sensitive info
+const EMAIL_USER = process.env.EMAIL_USER || "sayandutta.developer@gmail.com";
+const EMAIL_PASS = process.env.EMAIL_PASS || "your-app-password";
 
-// Nodemailer config with Gmail (use environment variables in production)
+// Nodemailer transporter using environment variables
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "sayandutta.developer@gmail.com",
-    pass: "vghv qeem frvy omkn", // Use app password here
+    user: EMAIL_USER,
+    pass: EMAIL_PASS,
   },
 });
 
-// POST endpoint to receive form data
 app.post("/submit", (req, res) => {
-  const { name, phone, email, codemodule_url, github_url, linkedin_url } = req.body;
+  const { name, phone, email, codemodule_url, github_url, linkedin_url } = req.body || {};
 
   if (!name || !email) {
     return res.status(400).json({ error: "Name and Email are required" });
   }
 
-    const mailOptions = {
+  const mailOptions = {
       from: "sayandutta.developer@gmail.com",
       to: email,
       subject: "🎉 Thanks for Submitting Your Project – GCCD Kolkata 2025",
@@ -52,18 +52,17 @@ app.post("/submit", (req, res) => {
       `
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error("Email sending error:", error);
-        return res.status(500).json({ error: "Email not sent" });
-      }
-      res.status(200).json({ message: "Submission successful, email sent!" });
-    });
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Email sending error:", error);
+      return res.status(500).json({ error: "Email not sent" });
+    }
+    res.status(200).json({ message: "Submission successful, email sent!" });
   });
+});
 
-
-// Start server
+// Correct port setup for Railway
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`✅ Server running on port ${PORT}`);
 });

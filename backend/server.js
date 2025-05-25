@@ -7,15 +7,15 @@ app.use(cors());
 app.use(express.json());
 
 // Use environment variables for sensitive info
-const EMAIL_USER = process.env.EMAIL_USER || "sayandutta.developer@gmail.com";
-const EMAIL_PASS = process.env.EMAIL_PASS || "your-app-password";
+const EMAIL_USER = process.env.GMAIL_USER || "sayandutta.developer@gmail.com";
+const EMAIL_PASS = process.env.GMAIL_PASS || "vghv qeem frvy omkn";
 
 // Nodemailer transporter using environment variables
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: GMAIL_USER,
-    pass: GMAIL_PASS,
+    user: EMAIL_USER,
+    pass: EMAIL_PASS,
   },
 });
 

@@ -35,77 +35,63 @@ Set these in your Railway project dashboard or a local `.env` file:
 GMAIL_USER=youremail@gmail.com
 GMAIL_PASS=your_app_password
 PORT=3000
-
+```
 ⚠️ Use a Gmail App Password (not your main Gmail password). Enable 2FA and generate one at: https://myaccount.google.com/apppasswords
 
 🚀 How to Run Locally
 Clone the Repo
-
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/gccd-kolkata-2025-backend.git
-cd gccd-kolkata-2025-backend
+```
+git clone https://github.com/yourusername/gccd-kolkata-2025.git
+cd gccd-kolkata-2025/backend
+```
 Install Dependencies
-
-bash
-Copy
-Edit
+```
 npm install
+```
 Create .env File
-
-env
-Copy
-Edit
+```
 GMAIL_USER=youremail@gmail.com
 GMAIL_PASS=your_app_password
 PORT=3000
+```
 Run the Server
-
-bash
-Copy
-Edit
+```
 node server.js
+```
 Test Endpoint
-
-bash
-Copy
-Edit
+```
 curl -X POST http://localhost:3000/submit \
   -H "Content-Type: application/json" \
-  -d '{"name":"Sayan","email":"test@example.com"}'
+  -d '{"name":"GDG KOLKATA","email":"test@example.com"}'
+```
 📩 Email Format
-The user receives a beautifully formatted HTML email with:
+
 
 Welcome message and acknowledgment
 
-Special discount code: #CCDGH2025
+Special discount code:
 
 Community contact via LinkedIn
 
 🧪 API Endpoint
 POST /submit
 Payload Example:
-
-json
-Copy
-Edit
+```
 {
-  "name": "Sayan Dutta",
-  "email": "sd8698621@gmail.com",
-  "phone": "7894561230",
-  "codemodule_url": "https://example.com/codemodule",
-  "github_url": "https://github.com/sayandutta",
-  "linkedin_url": "https://linkedin.com/in/sayandutta"
+  "name": "GDG KOLKATA",
+  "email": "test@gmail.com",
+  "phone": "1122334455",
+  "codemodule_url": "https://example.com/test",
+  "github_url": "https://github.com/test,
+  "linkedin_url": "https://linkedin.com/in/test"
 }
+```
 Response:
-
-json
-Copy
-Edit
+```
 {
   "message": "Submission successful, email sent!"
 }
+```
 🙌 Credits
 Built with ❤️ by GDG Cloud Kolkata for the open-source community as part of Google Cloud Community Days 2025.
 

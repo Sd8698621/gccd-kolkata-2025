@@ -8,7 +8,7 @@ app.use(express.json());
 
 // Load sensitive info from env (fallback only used for local testing)
 const EMAIL_USER = process.env.GMAIL_USER || "sayandutta.developer@gmail.com";
-const EMAIL_PASS = process.env.GMAIL_PASS;
+const EMAIL_PASS = process.env.GMAIL_PASS || "iady kqrh wpla qpin";
 
 // Create transporter using Gmail SMTP
 const transporter = nodemailer.createTransport({

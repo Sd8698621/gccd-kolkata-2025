@@ -40,7 +40,7 @@ app.post("/submit", (req, res) => {
       
       <h3 style="color: #333;">🎁 Here’s Your Special Discount Code:</h3>
       <div style="background-color: #6200ea; color: white; display: inline-block; padding: 10px 16px; border-radius: 8px; font-size: 1.2rem; letter-spacing: 1px; font-weight: bold;">
-        CCDGH2025
+        #CCDGH2025
       </div>
 
       <p style="margin-top: 20px;">You can use this code while registering for the event to avail your discount.</p>
